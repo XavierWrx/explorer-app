@@ -3,15 +3,102 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>explorer-app</title>
+  <title>ExplorerApp - Home</title>
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap"
+    rel="stylesheet" />
 </head>
 
-<body class="bg-amber-300 p-8">
-  <h1 class="text-blue-50 text-9xl">
-     explorer-app
-    </h1>
+
+
+<!-- CUERPO  PRINCIPAL  -->
+
+<body class="bg-surface-muted font-lato text-texto-primary main-h-screen flex flex-col justify-between">
+  <!-- ENCABEZADO NEVEGACION -->
+
+  <!-- Color // texto color // padding  // alto de HeaderAzul  -->
+   <!-- Recordar que padding es P-(Selecionamos el color de style) -->
+  <header class=" bg-brand-secondary text-texto-invert p-lg py-7">  
+    <div class="max-w-7x1  mx-auto flex flex-col  md:flex-row items-center justify-between gap-4">
+      <span class="font-roboto font-blod text-lg tracking-wide">
+        SCAN. GUESS. MASTER THE WORLD
+      </span>
+
+      <img src="/src/assets/Mosaico.svg" alt="Logo" class="w-10 h-10 object-contain" />
+
+      <!-- Navegacion -->
+
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="#"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-md hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+          <img src="/src/assets/home.svg" alt="Inicio" class="w-5 h-5" />
+          <span>Inicio</span>
+        </a>
+        <a href="#"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-md hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+          <img src="/src/assets/Mosaico.svg" alt="Mosaic" class="w-5 h-5" />
+          <span>Mosaic de paises</span>
+        </a>
+        <a href="#"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-md hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+          <img src="/src/assets/Acerca de.svg" alt="Acerca de" class="w-5 h-5" />
+          <span>Acerca de</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- contenido principal -->
+
+  <main>
+<!-- busqueda -->
+  <section class="bg-surface-bg rounded-rd-lg p-6 shadow-sm border border-gray-100 mb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div class="lg:col-span-5">
+          <h1 class="font-roboto font-black text-2xl md:text-3xl leading-tight text-slate-900">EXPLORAR PAISES<br />DEL
+            MUNDO</h1>
+          <p class="font-roboto font-bold text-base md:text-lg mt-1 text-slate-700">Aprende lo mas importante</p>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col gap-4">
+          <div class="relative w-full">
+            <img src="/src/assets/Buscar.svg" alt="Buscar" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2" />
+            <input type="text" placeholder="BUSCAR"
+              class="w-full h-12 pl-12 pr-4 border-2 border-brand-accent rounded-rd-sm font-roboto text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-button-hover text-slate-900 bg-white" />
+          </div>
+
+          <!-- Sección de búsqueda y filtro con altura consistente -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+
+            <button type="button"
+              class="bg-slate-300 hover:bg-slate-400 text-slate-900 font-roboto font-bold px-6 h-12 rounded-rd-sm text-sm transition-all shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary">
+              REGRESAR
+            </button>
+
+            <div
+              class="flex items-center gap-2 border-2 border-brand-accent rounded-rd-sm px-3 h-12 flex-1 max-w-xs bg-white focus-within:ring-2 focus-within:ring-brand-button-hover">
+              <img src="/src/assets/filtro.svg" alt="Filtrar" class="w-4 h-4" />
+              <input type="text" placeholder="Filtrar"
+                class="w-full text-sm outline-none bg-transparent text-slate-900" />
+            </div>
+
+            <button type="button"
+              class="bg-brand-button-default hover:bg-brand-button-hover text-slate-900 font-roboto font-bold px-8 h-12 rounded-rd-sm text-sm transition-all shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary">
+              BUSCAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </main>
   <div id="app"></div>
   <script type="module" src="/src/main.ts"></script>
 </body>
