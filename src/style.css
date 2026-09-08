@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+
+@theme {
+  /* Colores de Marca y Superficies */
+  --color-brand-accent: #fbbf24;
+  --color-brand-primary: #f8f9fa;
+  --color-brand-secondary: #1e3a8a;
+  
+  --color-brand-button-border-gold: #fbbf24;
+  --color-brand-button-default: #fcbb13;
+  --color-brand-button-estado-desabilitado: #c0c4ca;
+  --color-brand-button-estado-desabilitado-marcado: #ffd873;
+  --color-brand-button-hover: #ffb800;
+  --color-brand-button-background: #fbbf24;
+
+  --color-surface-background: #ffffff;
+  --color-surface-color-background: #f8f9fa;
+  --color-surface-icon-color: #000000;
+
+  /* Colores de Texto  */
+  --color-texto-invert: #ffffff;
+  --color-texto-primary: #ffee00;
+  --color-texto-secondary: #475569;
+
+  /* Radios de Borde */
+  --radius-rd-full: 999px;
+  --radius-rd-sm: 8px;
+  --radius-rd-lg: 20px;
+  --radius-rd-md: 12px;
+
+  /* Espaciados */
+  --spacing-ex-lg: 24px;
+  --spacing-ex-md: 20px;
+  --spacing-lg: 16px;
+  --spacing-md: 12px;
+  --spacing-sm: 8px;
+  --spacing-xs: 4px;
+
+  
+}
