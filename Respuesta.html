@@ -2,250 +2,240 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ExplorerApp - Detalle de País</title>
-    <link rel="stylesheet" href="/src/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap"
-        rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExplorerApp - Detalle de País</title>
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700;900&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body class="bg-surface-color-background font-lato text-texto-secondary min-h-screen flex flex-col justify-between">
 
-    <!-- ENCABEZADO Y NAVEGACION -->
-    <header class="bg-brand-secondary text-texto-invert p-lg py-5 shadow-sm">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 px-4">
-            <span class="font-roboto font-black text-sm md:text-base tracking-wide uppercase">
-                Scan. Guess. Master the world.
+  <!-- Encabezado y Navegación -->
+  <header class="bg-brand-secondary text-texto-invert p-lg py-5 shadow-sm">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 md:gap-8 px-4">
+      <span class="font-roboto font-black text-sm md:text-base tracking-wide uppercase">
+        Scan. Guess. Master the world.
+      </span>
+
+      <a href="/index.html" class="flex items-center justify-center">
+        <img src="/src/assets/Mosaico.svg" alt="Explorer App Logo" class="w-9 h-9 object-contain" />
+      </a>
+
+      <nav class="flex items-center gap-6 text-sm font-medium">
+        <a href="/index.html"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-rd-sm hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+          <img src="/src/assets/home.svg" alt="" class="w-5 h-5" />
+          <span>Inicio</span>
+        </a>
+        <a href="/Busqueda.html"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-rd-sm hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+          <img src="/src/assets/Mosaico.svg" alt="" class="w-5 h-5" />
+          <span>Mosaic de paises</span>
+        </a>
+        <a href="/Respuesta.html" aria-current="page"
+          class="flex items-center gap-2 px-3 py-1.5 rounded-rd-sm border-b-2 border-brand-accent text-brand-accent font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
+          <img src="/src/assets/acerca de.svg" alt="" class="w-5 h-5" />
+          <span>Acerca de</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido Principal -->
+  <main class="w-full max-w-6xl mx-auto px-4 py-8 flex-1 flex flex-col">
+
+    <!-- Sección de Búsqueda Superior -->
+    <section class="bg-surface-background rounded-rd-lg p-6 mb-10 shadow-sm border border-brand-primary max-w-4xl mx-auto w-full">
+      <form action="/Busqueda.html" method="GET" class="flex flex-col gap-4">
+        <div class="relative w-full">
+          <img src="/src/assets/Buscar.svg" alt="" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2" />
+          <input type="text" name="query" placeholder="Escriba nombre del pais"
+            class="w-full h-12 pl-12 pr-4 border-2 border-brand-accent rounded-rd-sm font-roboto text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-surface-icon-color bg-surface-background shadow-inner" />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+          <a href="/Busqueda.html"
+            class="bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold h-11 px-4 rounded-rd-sm text-xs flex items-center justify-center transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary uppercase">
+            REGRESAR
+          </a>
+
+          <div class="relative w-full">
+            <img src="/src/assets/Filtro.svg" alt="" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input type="text" placeholder="Filtrar"
+              class="w-full h-11 pl-9 pr-3 border border-brand-accent rounded-rd-sm font-roboto text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-surface-icon-color bg-surface-background" />
+          </div>
+
+          <button type="submit"
+            class="bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold h-11 px-4 rounded-rd-sm text-xs transition-all shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary uppercase">
+            BUSCAR
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Bloque Superior: Datos Generales y Perfil Geográfico -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+
+      <!-- Tarjeta: Datos Generales -->
+      <article
+        class="bg-surface-background rounded-rd-md border-2 border-brand-accent p-6 shadow-sm flex flex-col justify-between">
+        <h2 class="font-roboto font-black text-center text-lg md:text-xl text-surface-icon-color uppercase mb-6 tracking-wide">
+          DATOS GENERALES
+        </h2>
+
+        <ul class="space-y-4 font-roboto text-sm text-texto-secondary">
+          <li class="flex items-center justify-between border-b border-brand-primary pb-2">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Poblacion.svg" alt="" class="w-5 h-5 object-contain" />
+              Población:
             </span>
+            <span class="font-semibold">143.5 Millones</span>
+          </li>
+          <li class="flex items-center justify-between border-b border-brand-primary pb-2">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Capital.svg" alt="" class="w-5 h-5 object-contain" />
+              Capítal:
+            </span>
+            <span class="font-semibold">Moscú</span>
+          </li>
+          <li class="flex items-center justify-between border-b border-brand-primary pb-2">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Region.svg" alt="" class="w-5 h-5 object-contain" />
+              Region:
+            </span>
+            <span class="font-semibold">Europa del Este</span>
+          </li>
+          <li class="flex items-center justify-between border-b border-brand-primary pb-2">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Idioma.svg" alt="" class="w-5 h-5 object-contain" />
+              Idioma:
+            </span>
+            <span class="font-semibold">Ruso</span>
+          </li>
+          <li class="flex items-center justify-between border-b border-brand-primary pb-2">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Area.svg" alt="" class="w-5 h-5 object-contain" />
+              Área:
+            </span>
+            <span class="font-semibold">17,098,242km^2</span>
+          </li>
+          <li class="flex items-center justify-between border-b border-brand-primary pb-2">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Coordenadas.svg" alt="" class="w-5 h-5 object-contain" />
+              Coordenadas:
+            </span>
+            <span class="font-semibold">60.°N,100.0° E</span>
+          </li>
+          <li class="flex items-center justify-between">
+            <span class="flex items-center gap-3 font-medium text-surface-icon-color">
+              <img src="/src/assets/Moneda.svg" alt="" class="w-5 h-5 object-contain" />
+              Moneda:
+            </span>
+            <span class="font-semibold">Rublo Ruso RUB</span>
+          </li>
+        </ul>
+      </article>
 
-            <a href="/index.html" class="flex items-center justify-center">
-                <img src="/src/assets/Mosaico.svg" alt="Explorer App Logo" class="w-9 h-9 object-contain" />
-            </a>
-
-            <nav class="flex items-center gap-6 text-sm font-medium">
-                <a href="/index.html"
-                    class="flex items-center gap-2 px-3 py-1.5 rounded-rd-sm hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
-                    <img src="/src/assets/home.svg" alt="" class="w-5 h-5" />
-                    <span>Inicio</span>
-                </a>
-                <a href="#"
-                    class="flex items-center gap-2 px-3 py-1.5 rounded-rd-sm hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
-                    <img src="/src/assets/Mosaico.svg" alt="" class="w-5 h-5" />
-                    <span>Mosaic de paises</span>
-                </a>
-                <a href="#"
-                    class="flex items-center gap-2 px-3 py-1.5 rounded-rd-sm hover:text-brand-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent">
-                    <img src="/src/assets/acerca de.svg" alt="" class="w-5 h-5" />
-                    <span>Acerca de</span>
-                </a>
-            </nav>
+      <!-- Tarjeta: Perfil Geográfico -->
+      <article
+        class="bg-surface-background rounded-rd-md border-2 border-brand-accent p-6 shadow-sm flex flex-col items-center justify-between">
+        <div class="w-full text-center">
+          <h2 class="font-roboto font-black text-lg md:text-xl text-surface-icon-color uppercase tracking-wide">
+            PERFIL GEOGRAFICO
+          </h2>
+          <h3 class="font-roboto font-black text-base md:text-lg text-surface-icon-color uppercase mt-1 mb-4">
+            RUSIA
+          </h3>
         </div>
-    </header>
 
-    <!-- CONTENIDO PRINCIPAL -->
-    <main class="w-full max-w-6xl mx-auto px-4 py-8 flex-1">
-
-        <!-- SECCION BUSCADOR SUPERIOR -->
-        <section
-            class="bg-surface-background rounded-rd-lg p-6 mb-10 shadow-sm border border-slate-100 max-w-4xl mx-auto">
-            <div class="flex flex-col gap-4">
-                <div class="relative w-full">
-                    <img src="/src/assets/Buscar.svg" alt="" class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2" />
-                    <input type="text" placeholder="Escriba nombre del pais"
-                        class="w-full h-12 pl-12 pr-4 border-2 border-brand-accent rounded-rd-sm font-roboto text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-slate-900 bg-white" />
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
-                    <a href="/index.html"
-                        class="bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-slate-900 font-roboto font-bold h-11 px-4 rounded-rd-sm text-xs flex items-center justify-center transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary uppercase">
-                        REGRESAR
-                    </a>
-
-                    <div class="relative w-full">
-                        <img src="/src/assets/Filtro.svg" alt=""
-                            class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" />
-                        <input type="text" placeholder="Filtrar"
-                            class="w-full h-11 pl-9 pr-3 border border-brand-accent rounded-rd-sm font-roboto text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-slate-900 bg-white" />
-                    </div>
-
-                    <a href="/busqueda.html"
-                        class="bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-slate-900 font-roboto font-bold h-11 px-4 rounded-rd-sm text-xs flex items-center justify-center transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary uppercase">
-                        BUSCAR
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- BLOQUE SUPERIOR: DATOS GENERALES Y PERFIL GEOGRAFICO -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-
-            <!-- TARJETA: DATOS GENERALES -->
-            <article
-                class="bg-surface-background rounded-rd-md border-2 border-brand-accent p-6 shadow-sm flex flex-col justify-between">
-                <h2
-                    class="font-roboto font-black text-center text-lg md:text-xl text-slate-900 uppercase mb-6 tracking-wide">
-                    DATOS GENERALES
-                </h2>
-
-                <ul class="space-y-4 font-roboto text-sm text-slate-800">
-                    <li class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Poblacion.svg" alt="" class="w-5 h-5 object-contain" />
-                            Población:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">143.5 Millones</span>
-                    </li>
-                    <li class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Capital.svg" alt="" class="w-5 h-5 object-contain" />
-                            Capítal:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">Moscú</span>
-                    </li>
-                    <li class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Region.svg" alt="" class="w-5 h-5 object-contain" />
-                            Region:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">Europa del Este</span>
-                    </li>
-                    <li class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Idioma.svg" alt="" class="w-5 h-5 object-contain" />
-                            Idioma:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">Ruso</span>
-                    </li>
-                    <li class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Area.svg" alt="" class="w-5 h-5 object-contain" />
-                            Área:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">17,098,242km^2</span>
-                    </li>
-                    <li class="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Coordenadas.svg" alt="" class="w-5 h-5 object-contain" />
-                            Coordenadas:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">60.°N,100.0° E</span>
-                    </li>
-                    <li class="flex items-center justify-between">
-                        <span class="flex items-center gap-3 font-medium">
-                            <img src="/src/assets/Moneda.svg" alt="" class="w-5 h-5 object-contain" />
-                            Moneda:
-                        </span>
-                        <span class="text-texto-secondary font-semibold">Rublo Ruso RUB</span>
-                    </li>
-                </ul>
-            </article>
-
-            <!-- TARJETA: PERFIL GEOGRAFICO -->
-            <article
-                class="bg-surface-background rounded-rd-md border-2 border-brand-accent p-6 shadow-sm flex flex-col items-center justify-between">
-                <div class="w-full text-center">
-                    <h2 class="font-roboto font-black text-lg md:text-xl text-slate-900 uppercase tracking-wide">
-                        PERFIL GEOGRAFICO
-                    </h2>
-                    <h3 class="font-roboto font-black text-base md:text-lg text-slate-900 uppercase mt-1 mb-4">
-                        RUSIA
-                    </h3>
-                </div>
-
-                <div
-                    class="w-full h-72 rounded-rd-sm overflow-hidden flex items-center justify-center bg-slate-50 border border-slate-100 p-2">
-                    <img src="/src/assets/hero.png" alt="Mapa geográfico de Rusia"
-                        class="w-full h-full object-contain" />
-                </div>
-            </article>
-
-        </section>
-
-        <!-- BLOQUE INFERIOR: PAISES RELACIONADOS HORIZONTALES -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-            <!-- TARJETA HORIZONTAL: FINLANDIA -->
-            <article
-                class="bg-surface-background rounded-rd-md border-2 border-brand-accent/60 p-5 shadow-sm flex flex-col sm:flex-row items-center gap-6">
-                <div
-                    class="w-full sm:w-44 h-28 flex-shrink-0 bg-slate-100 rounded-rd-sm border border-slate-200 overflow-hidden flex items-center justify-center">
-                    <img src="/src/assets/Mosaico.svg" alt="Bandera de Finlandia" class="w-full h-full object-cover" />
-                </div>
-
-                <div class="flex-1 w-full text-center sm:text-left">
-                    <h3 class="font-roboto font-black text-lg text-slate-900 uppercase mb-3 text-center sm:text-center">
-                        FINLANDIA
-                    </h3>
-                    <ul class="space-y-1.5 font-roboto text-xs text-slate-700">
-                        <li class="flex justify-between items-center px-1">
-                            <span class="font-bold text-slate-900">Población:</span>
-                            <span class="text-texto-secondary">5.5 millones</span>
-                        </li>
-                        <li class="flex justify-between items-center px-1">
-                            <span class="font-bold text-slate-900">Region:</span>
-                            <span class="text-texto-secondary">Europa del Norte</span>
-                        </li>
-                        <li class="flex justify-between items-center px-1">
-                            <span class="font-bold text-slate-900">Capítal:</span>
-                            <span class="text-texto-secondary">Helsiki</span>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-
-            <!-- TARJETA HORIZONTAL: UCRANIA -->
-            <article
-                class="bg-surface-background rounded-rd-md border-2 border-brand-accent/60 p-5 shadow-sm flex flex-col sm:flex-row items-center gap-6">
-                <div
-                    class="w-full sm:w-44 h-28 flex-shrink-0 bg-slate-100 rounded-rd-sm border border-slate-200 overflow-hidden flex items-center justify-center">
-                    <img src="/src/assets/Mosaico.svg" alt="Bandera de Ucrania" class="w-full h-full object-cover" />
-                </div>
-
-                <div class="flex-1 w-full text-center sm:text-left">
-                    <h3 class="font-roboto font-black text-lg text-slate-900 uppercase mb-3 text-center sm:text-center">
-                        UCRANIA
-                    </h3>
-                    <ul class="space-y-1.5 font-roboto text-xs text-slate-700">
-                        <li class="flex justify-between items-center px-1">
-                            <span class="font-bold text-slate-900">Población:</span>
-                            <span class="text-texto-secondary">39.5 Millones</span>
-                        </li>
-                        <li class="flex justify-between items-center px-1">
-                            <span class="font-bold text-slate-900">Region:</span>
-                            <span class="text-texto-secondary">Europa del este</span>
-                        </li>
-                        <li class="flex justify-between items-center px-1">
-                            <span class="font-bold text-slate-900">Capítal:</span>
-                            <span class="text-texto-secondary">kieve</span>
-                        </li>
-                    </ul>
-                </div>
-            </article>
-
-        </section>
-
-    </main>
-
-    <!-- PIE DE PAGINA -->
-    <footer class="bg-brand-secondary text-texto-invert border-t-4 border-brand-accent px-6 py-6 mt-auto">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
-            <div class="flex flex-col gap-1 items-center md:items-start">
-                <a href="#" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Explorere
-                    App</a>
-                <a href="#" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Redes
-                    Sociales</a>
-            </div>
-            <img src="/src/assets/Mosaico.svg" alt="Logo Footer" class="w-8 h-8 object-contain" />
-            <div class="flex flex-col gap-1 items-center md:items-end">
-                <a href="#" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Más
-                    información</a>
-            </div>
+        <div class="w-full h-72 rounded-rd-sm overflow-hidden flex items-center justify-center bg-surface-color-background border border-brand-primary p-2">
+          <img src="/src/assets/hero.png" alt="Mapa geográfico de Rusia" class="w-full h-full object-contain" />
         </div>
-    </footer>
+      </article>
+
+    </section>
+
+    <!-- Bloque Inferior: Países Relacionados Horizontales -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+
+      <!-- Tarjeta Horizontal: Finlandia -->
+      <article
+        class="bg-surface-background rounded-rd-md border-2 border-brand-accent/60 p-5 shadow-sm flex flex-col sm:flex-row items-center gap-6">
+        <div class="w-full sm:w-44 h-28 flex-shrink-0 bg-surface-color-background rounded-rd-sm border border-brand-primary overflow-hidden flex items-center justify-center">
+          <img src="/src/assets/Mosaico.svg" alt="Bandera de Finlandia" class="w-full h-full object-cover" />
+        </div>
+
+        <div class="flex-1 w-full text-center sm:text-left">
+          <h3 class="font-roboto font-black text-lg text-surface-icon-color uppercase mb-3 text-center sm:text-center">
+            FINLANDIA
+          </h3>
+          <ul class="space-y-1.5 font-roboto text-xs text-texto-secondary">
+            <li class="flex justify-between items-center px-1">
+              <span class="font-bold text-surface-icon-color">Población:</span>
+              <span>5.5 millones</span>
+            </li>
+            <li class="flex justify-between items-center px-1">
+              <span class="font-bold text-surface-icon-color">Region:</span>
+              <span>Europa del Norte</span>
+            </li>
+            <li class="flex justify-between items-center px-1">
+              <span class="font-bold text-surface-icon-color">Capítal:</span>
+              <span>Helsiki</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Tarjeta Horizontal: Ucrania -->
+      <article
+        class="bg-surface-background rounded-rd-md border-2 border-brand-accent/60 p-5 shadow-sm flex flex-col sm:flex-row items-center gap-6">
+        <div class="w-full sm:w-44 h-28 flex-shrink-0 bg-surface-color-background rounded-rd-sm border border-brand-primary overflow-hidden flex items-center justify-center">
+          <img src="/src/assets/Mosaico.svg" alt="Bandera de Ucrania" class="w-full h-full object-cover" />
+        </div>
+
+        <div class="flex-1 w-full text-center sm:text-left">
+          <h3 class="font-roboto font-black text-lg text-surface-icon-color uppercase mb-3 text-center sm:text-center">
+            UCRANIA
+          </h3>
+          <ul class="space-y-1.5 font-roboto text-xs text-texto-secondary">
+            <li class="flex justify-between items-center px-1">
+              <span class="font-bold text-surface-icon-color">Población:</span>
+              <span>39.5 Millones</span>
+            </li>
+            <li class="flex justify-between items-center px-1">
+              <span class="font-bold text-surface-icon-color">Region:</span>
+              <span>Europa del este</span>
+            </li>
+            <li class="flex justify-between items-center px-1">
+              <span class="font-bold text-surface-icon-color">Capítal:</span>
+              <span>kieve</span>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="bg-brand-secondary text-texto-invert border-t-4 border-brand-accent px-6 py-6 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
+      <div class="flex flex-col gap-1 items-center md:items-start">
+        <a href="/index.html" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Explorer App</a>
+        <a href="#" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Redes Sociales</a>
+      </div>
+      <img src="/src/assets/Mosaico.svg" alt="Logo Footer" class="w-8 h-8 object-contain" />
+      <div class="flex flex-col gap-1 items-center md:items-end">
+        <a href="/Respuesta.html" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Más información</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
