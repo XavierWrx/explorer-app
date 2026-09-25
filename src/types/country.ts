@@ -1,27 +1,43 @@
 // src/types/country.ts
 
-export interface CountryName {
+export interface CountryTranslation {
     common: string;
+    official: string;
+}
+
+export interface CountryNames {
+    common: string;
+    official?: string;
+    translations?: {
+        spa?: CountryTranslation;
+        [key: string]: CountryTranslation | undefined;
+    };
 }
 
 export interface CountryCodes {
-    cca2: string;
+    alpha_2?: string;
+    alpha_3?: string;
 }
 
 export interface CountryFlag {
-    svg: string;
-    description: string;
+    url_svg?: string;
+    url_png?: string;
+    description?: string;
 }
 
 export interface CountryCapital {
     name: string;
+    coordinates?: {
+        lat: number;
+        lng: number;
+    };
 }
 
 export interface Country {
-    name: CountryName;
+    names: CountryNames;
+    capitals?: CountryCapital[];
     codes?: CountryCodes;
     flag?: CountryFlag;
-    capital?: CountryCapital[];
     population: number;
     region: string;
 }
