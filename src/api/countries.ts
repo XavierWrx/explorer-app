@@ -2,7 +2,8 @@
 import type { Country, CountryResponse } from '../types/country';
 
 const API_KEY: string = import.meta.env.VITE_REST_CONTRIES_API_KEY;
-const API_URL = '/api-proxy/countries/v5?limit=25&pretty=1';
+const API_URL = '/api-proxy/countries/v5?limit=100&pretty=1';
+
 
 export async function fetchCountries(): Promise<Country[]> {
     if (!API_KEY) {
