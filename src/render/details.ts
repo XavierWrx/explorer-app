@@ -37,11 +37,10 @@ export function renderDetail(country: CountryDetail): string {
         Sin fronteras terrestres registradas
     </span>`;
 
-    const flag = country.flag.url_svg
+    const flag = country.flag?.url_svg
         ? `<img
-        src="${escapeHtml(country.flag.url_svg)}"
-        alt="${escapeHtml(
-            country.flag.description ||
+        src="${escapeHtml(country.flag?.url_svg)}"
+        alt="${escapeHtml(country.flag?.description ||
             `Bandera de ${country.names.common}`,
         )}"
         class="aspect-3/2 w-full rounded-sm bg-neutral-0
