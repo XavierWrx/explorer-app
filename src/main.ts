@@ -25,11 +25,6 @@ import {
 // 2. REFERENCIAS DEL HTML
 
 
-const searchForm: HTMLFormElement | null =
-    document.querySelector<HTMLFormElement>(
-        'form[action="/Busqueda.html"]',
-    );
-
 const countrySearch: HTMLInputElement | null =
     document.querySelector<HTMLInputElement>(
         'input[name="query"]',
@@ -183,23 +178,6 @@ countrySearch?.addEventListener(
 regionFilter?.addEventListener(
     "change",
     (): void => {
-        applyFilter();
-    },
-);
-
-
-
-// 8. EVENTO DEL FORMULARIO
-
-
-searchForm?.addEventListener(
-    "submit",
-    (
-        event: SubmitEvent,
-    ): void => {
-
-        event.preventDefault();
-
         applyFilter();
     },
 );

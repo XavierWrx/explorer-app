@@ -10,16 +10,20 @@ export function filterCountries(
     region: string,
 ): Country[] {
 
-    const normalizeQuery: string =
-        query
+    const normalize = (value: string): string =>
+        value
             .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
             .trim();
+
+    const normalizeQuery: string = normalize(query);
 
     return countries.filter(
         (country: Country): boolean => {
 
             const countryRegion: string =
-                country.region.toLowerCase();
+                normalize(country.region);
 
             const countryNames: string[] = [
                 country.names.common,
@@ -32,7 +36,7 @@ export function filterCountries(
             ]
                 .map(
                     (name: string): string =>
-                        name.toLowerCase(),
+                    normalize(name),
                 );
 
             const matchesName: boolean =
