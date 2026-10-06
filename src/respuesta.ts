@@ -3,7 +3,12 @@ import "./style.css";
 import { fetchCountries } from "./api/countries";
 import { createCountryCard } from "./render/countryCard";
 import type { Country } from "./types/country";
-import { formatPopulation, getRequiredElement } from "./utils/format";
+import {
+    formatPopulation,
+    getCapital,
+    getFlagDescription,
+    getRequiredElement,
+} from "./utils/format";
 
 const countryNameElement = getRequiredElement<HTMLElement>("#country-name");
 const populationElement = getRequiredElement<HTMLElement>("#country-population");
@@ -69,15 +74,13 @@ async function loadCountryDetails(): Promise<void> {
         const countryName = getCountryName(country);
         countryNameElement.textContent = countryName;
         populationElement.textContent = formatPopulation(country.population);
-        capitalElement.textContent =
-            country.capitals?.[0]?.name || "Sin información";
+        capitalElement.textContent = getCapital(country);
         regionElement.textContent = country.region || "Sin información";
 
         const flagUrl = country.flag?.url_svg || country.flag?.url_png;
         if (flagUrl) {
             flagElement.src = flagUrl;
-            flagElement.alt =
-                country.flag?.description || `Bandera de ${countryName}`;
+            flagElement.alt = getFlagDescription(country);
         }
 
         const relatedCountries = countries

@@ -1,6 +1,6 @@
 // src/render/countryCard.ts
 import type { Country } from '../types/country';
-import { formatPopulation } from '../utils/format';
+import { formatPopulation, getCapital, getFlagDescription } from '../utils/format';
 
 export function createCountryCard(country: Country): string {
     const countryName =
@@ -8,17 +8,14 @@ export function createCountryCard(country: Country): string {
         country.names?.common ||
         'Awan naganna a nasion';
 
-    const capitalName = country.capitals?.[0]?.name || 'Awan nailista a kabesera';
+    const capitalName = getCapital(country);
 
     const flagUrl =
         country.flag?.url_svg ||
         country.flag?.url_png ||
         '/src/assets/Mosaico.svg';
 
-    const flagDescription =
-        country.flag?.description && country.flag.description.trim() !== ''
-            ? country.flag.description
-            : `Bandera ti ${countryName}`;
+    const flagDescription = getFlagDescription(country);
 
     const formattedPopulation = formatPopulation(country.population);
 
