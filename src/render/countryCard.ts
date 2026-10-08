@@ -61,7 +61,7 @@ export function createCountryCard(country: Country): string {
       </div>
 
       <a
-          href="/index.html#/country/${encodeURIComponent(country.codes?.alpha_2 || country.names.common)}"
+        href="/Respuesta.html?country=${encodeURIComponent(countryName)}"
         aria-label="Kitaen ti ad-adu pay nga impormasion maipapan iti ${countryName}"
         class="mt-6 w-full bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold py-2.5 rounded-rd-sm text-xs transition-all duration-200 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary flex items-center justify-center">
         Más información
