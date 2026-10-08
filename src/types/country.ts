@@ -33,6 +33,27 @@ export interface CountryCapital {
     };
 }
 
+export interface CountryArea {
+    kilometers?: number;
+    miles?: number;
+}
+
+export interface CountryCoordinates {
+    lat?: number;
+    lng?: number;
+}
+
+export interface CountryLanguage {
+    name?: string;
+    native_name?: string;
+}
+
+export interface CountryCurrency {
+    code?: string;
+    name: string;
+    symbol?: string;
+}
+
 export interface Country {
     names: CountryNames;
     capitals?: CountryCapital[];
@@ -40,6 +61,10 @@ export interface Country {
     flag?: CountryFlag;
     population: number;
     region: string;
+    area?: CountryArea;
+    coordinates?: CountryCoordinates;
+    languages?: CountryLanguage[];
+    currencies?: CountryCurrency[];
 }
 
 export interface CountryDataMeta {
