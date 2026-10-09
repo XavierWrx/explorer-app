@@ -49,12 +49,14 @@
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="w-full max-w-7xl mx-auto px-4 py-8 flex-1 flex flex-col">
+    <div id="home-view">
 
     <!-- SECCION BUSCADOR PRINCIPAL -->
     <section class="bg-surface-background rounded-rd-lg p-6 md:p-8 mb-10 shadow-sm border border-brand-primary">
       <div class="flex flex-col items-center text-center gap-8 max-w-3xl mx-auto w-full">
         <div>
-          <h1 class="font-roboto font-black text-2xl md:text-3xl leading-tight text-surface-icon-color tracking-tight uppercase">
+          <h1 id="explore-title"
+            class="font-roboto font-black text-(length:--font-page-title) leading-tight text-surface-icon-color tracking-tight uppercase">
             EXPLORAR PAISES<br />DEL MUNDO
           </h1>
           <p class="font-roboto font-bold text-base md:text-lg mt-1 text-texto-secondary">
@@ -76,203 +78,84 @@
             </button>
 
             <div class="relative flex-1">
-              <img src="/src/assets/Filtro.svg" alt="" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input type="text" placeholder="Filtrar por región..."
-                class="w-full h-11 pl-9 pr-3 border border-brand-accent rounded-rd-sm font-roboto text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-surface-icon-color bg-surface-background" />
+              <img src="/src/assets/Filtro.svg" alt="" aria-hidden="true"
+                class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <select id="region-filter" name="region-filter" aria-label="Filtrar países por región"
+                class="w-full h-11 pl-9 pr-8 border border-brand-accent rounded-rd-sm font-roboto text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-surface-icon-color bg-surface-background cursor-pointer">
+                <option value="">Todas las regiones</option>
+                <option value="Africa">África</option>
+                <option value="Americas">América</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europa</option>
+                <option value="Oceania">Oceanía</option>
+              </select>
             </div>
 
-            <a href="/Busqueda.html"
+
+
+            <button type="submit"
               class="bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold px-8 h-11 rounded-rd-sm text-xs transition-all shadow-sm cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary inline-flex items-center justify-center uppercase">
               BUSCAR
-            </a>
+            </button>
           </div>
         </form>
+
+
+        
       </div>
     </section>
 
     <!-- SECCION PAISES RECOMENDADOS -->
-    <section class="mb-12">
+    <!-- <section class="mb-12">
       <h2 class="max-w-5xl mx-auto font-roboto font-black text-xl mb-6 tracking-wide text-texto-secondary uppercase text-center sm:text-left">
         PAÍSES RECOMENDADOS
       </h2>
+-->
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto justify-items-center">
 
-        <!-- TARJETA 1: GUATEMALA -->
-        <article
-          class="w-full bg-surface-background rounded-rd-lg border-2 border-brand-accent p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-accent">
-          <div>
-            <h3 class="font-roboto font-bold text-center text-lg mb-4 text-texto-secondary">Guatemala</h3>
-            <div
-              class="w-full h-36 bg-surface-color-background rounded-rd-md mb-4 border border-brand-primary overflow-hidden flex items-center justify-center">
-              <img src="/src/assets/Mosaico.svg" alt="Bandera de Guatemala" class="w-full h-full object-cover" />
-            </div>
-            <ul class="space-y-2 text-xs font-medium text-texto-secondary">
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Poblacion.svg" alt="" class="w-4 h-4" />
-                  Población:
-                </span>
-                <span>18.9 Millones</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Region.svg" alt="" class="w-4 h-4" />
-                  Región:
-                </span>
-                <span>América Central</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Capital.svg" alt="" class="w-4 h-4" />
-                  Capital:
-                </span>
-                <span>Ciudad de Guatemala</span>
-              </li>
-            </ul>
-          </div>
-          <a href="/Respuesta.html"
-            class="mt-6 w-full bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold py-2.5 rounded-rd-sm text-xs transition-all duration-200 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary flex items-center justify-center">
-            Más información
-          </a>
-        </article>
+    <!-- MODULO 2 -->
+<!-- MODULO 2 -->
+<section class="mb-12">
 
-        <!-- TARJETA 2: HONDURAS -->
-        <article
-          class="w-full bg-surface-background rounded-rd-lg border-2 border-brand-accent p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-accent">
-          <div>
-            <h3 class="font-roboto font-bold text-center text-lg mb-4 text-texto-secondary">Honduras</h3>
-            <div
-              class="w-full h-36 bg-surface-color-background rounded-rd-md mb-4 border border-brand-primary overflow-hidden flex items-center justify-center">
-              <img src="/src/assets/Mosaico.svg" alt="Bandera de Honduras" class="w-full h-full object-cover" />
-            </div>
-            <ul class="space-y-2 text-xs font-medium text-texto-secondary">
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Poblacion.svg" alt="" class="w-4 h-4" />
-                  Población:
-                </span>
-                <span>12.9 Millones</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Region.svg" alt="" class="w-4 h-4" />
-                  Región:
-                </span>
-                <span>América Central</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Capital.svg" alt="" class="w-4 h-4" />
-                  Capital:
-                </span>
-                <span>Tegucigalpa</span>
-              </li>
-            </ul>
-          </div>
-          <a href="/Respuesta.html"
-            class="mt-6 w-full bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold py-2.5 rounded-rd-sm text-xs transition-all duration-200 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary flex items-center justify-center">
-            Más información
-          </a>
-        </article>
+  <h2
+    class="max-w-5xl mx-auto font-roboto font-black text-xl mb-6 tracking-wide text-texto-secondary uppercase text-center sm:text-left">
+    Países Recomendados
+  </h2>
 
-        <!-- TARJETA 3: EL SALVADOR -->
-        <article
-          class="w-full bg-surface-background rounded-rd-lg border-2 border-brand-accent p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-accent">
-          <div>
-            <h3 class="font-roboto font-bold text-center text-lg mb-4 text-texto-secondary">El Salvador</h3>
-            <div
-              class="w-full h-36 bg-surface-color-background rounded-rd-md mb-4 border border-brand-primary overflow-hidden flex items-center justify-center">
-              <img src="/src/assets/Mosaico.svg" alt="Bandera de El Salvador" class="w-full h-full object-cover" />
-            </div>
-            <ul class="space-y-2 text-xs font-medium text-texto-secondary">
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Poblacion.svg" alt="" class="w-4 h-4" />
-                  Población:
-                </span>
-                <span>6.2 Millones</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Region.svg" alt="" class="w-4 h-4" />
-                  Región:
-                </span>
-                <span>América Central</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Capital.svg" alt="" class="w-4 h-4" />
-                  Capital:
-                </span>
-                <span>San Salvador</span>
-              </li>
-            </ul>
-          </div>
-          <a href="/Respuesta.html"
-            class="mt-6 w-full bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold py-2.5 rounded-rd-sm text-xs transition-all duration-200 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary flex items-center justify-center">
-            Más información
-          </a>
-        </article>
+  <section
+    id="country-container"
+    aria-label="Listado de países recomendados"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto justify-items-center">
+  </section>
 
-        <!-- TARJETA 4: COSTA RICA -->
-        <article
-          class="w-full bg-surface-background rounded-rd-lg border-2 border-brand-accent p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-accent">
-          <div>
-            <h3 class="font-roboto font-bold text-center text-lg mb-4 text-texto-secondary">Costa Rica</h3>
-            <div
-              class="w-full h-36 bg-surface-color-background rounded-rd-md mb-4 border border-brand-primary overflow-hidden flex items-center justify-center">
-              <img src="/src/assets/Mosaico.svg" alt="Bandera de Costa Rica" class="w-full h-full object-cover" />
-            </div>
-            <ul class="space-y-2 text-xs font-medium text-texto-secondary">
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Poblacion.svg" alt="" class="w-4 h-4" />
-                  Población:
-                </span>
-                <span>5.2 Millones</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Region.svg" alt="" class="w-4 h-4" />
-                  Región:
-                </span>
-                <span>América Central</span>
-              </li>
-              <li class="flex items-center justify-between">
-                <span class="flex items-center gap-2 font-bold text-surface-icon-color">
-                  <img src="/src/assets/Capital.svg" alt="" class="w-4 h-4" />
-                  Capital:
-                </span>
-                <span>San José</span>
-              </li>
-            </ul>
-          </div>
-          <a href="/Respuesta.html"
-            class="mt-6 w-full bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold py-2.5 rounded-rd-sm text-xs transition-all duration-200 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary flex items-center justify-center">
-            Más información
-          </a>
-        </article>
+</section>
 
-      </div>
-    </section>
+    </div>
 
+<!-- VISTA DE DETALLE -->
+<section id="detail-view" hidden aria-live="polite">
+
+</section>
   </main>
 
   <!-- PIE DE PAGINA -->
   <footer class="bg-brand-secondary text-texto-invert border-t-4 border-brand-accent px-6 py-6 mt-auto">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
       <div class="flex flex-col gap-1 items-center md:items-start">
-        <a href="/index.html" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Explorer App</a>
+        <a href="/index.html" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Explorer
+          App</a>
         <a href="#" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Redes Sociales</a>
       </div>
       <img src="/src/assets/Mosaico.svg" alt="Logo Footer" class="w-8 h-8 object-contain" />
       <div class="flex flex-col gap-1 items-center md:items-end">
-        <a href="/Respuesta.html" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Más información</a>
+        <a href="/Respuesta.html" class="hover:underline focus-visible:ring-2 focus-visible:ring-brand-accent">Más
+          información</a>
       </div>
     </div>
   </footer>
 
+
+  <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>

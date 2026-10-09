@@ -59,15 +59,22 @@
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
-          <a href="/Busqueda.html"
+          <a href="/index.html"
             class="bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold h-11 px-4 rounded-rd-sm text-xs flex items-center justify-center transition-all shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary uppercase">
             REGRESAR
           </a>
 
           <div class="relative w-full">
             <img src="/src/assets/Filtro.svg" alt="" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2" />
-            <input type="text" placeholder="Filtrar"
-              class="w-full h-11 pl-9 pr-3 border border-brand-accent rounded-rd-sm font-roboto text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-surface-icon-color bg-surface-background" />
+            <select id="region-filter" name="region-filter" aria-label="Filtrar países por región"
+              class="w-full h-11 pl-9 pr-3 border border-brand-accent rounded-rd-sm font-roboto text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary text-surface-icon-color bg-surface-background">
+              <option value="">Todas las regiones</option>
+              <option value="Africa">África</option>
+              <option value="Americas">América</option>
+              <option value="Asia">Asia</option>
+              <option value="Europe">Europa</option>
+              <option value="Oceania">Oceanía</option>
+            </select>
           </div>
 
           <button type="submit"
@@ -94,49 +101,49 @@
               <img src="/src/assets/Poblacion.svg" alt="" class="w-5 h-5 object-contain" />
               Población:
             </span>
-            <span class="font-semibold">143.5 Millones</span>
+            <span id="country-population" class="font-semibold">Cargando...</span>
           </li>
           <li class="flex items-center justify-between border-b border-brand-primary pb-2">
             <span class="flex items-center gap-3 font-medium text-surface-icon-color">
               <img src="/src/assets/Capital.svg" alt="" class="w-5 h-5 object-contain" />
-              Capítal:
+              Capital:
             </span>
-            <span class="font-semibold">Moscú</span>
+            <span id="country-capital" class="font-semibold">Cargando...</span>
           </li>
           <li class="flex items-center justify-between border-b border-brand-primary pb-2">
             <span class="flex items-center gap-3 font-medium text-surface-icon-color">
               <img src="/src/assets/Region.svg" alt="" class="w-5 h-5 object-contain" />
-              Region:
+              Región:
             </span>
-            <span class="font-semibold">Europa del Este</span>
+            <span id="country-region" class="font-semibold">Cargando...</span>
           </li>
           <li class="flex items-center justify-between border-b border-brand-primary pb-2">
             <span class="flex items-center gap-3 font-medium text-surface-icon-color">
               <img src="/src/assets/Idioma.svg" alt="" class="w-5 h-5 object-contain" />
               Idioma:
             </span>
-            <span class="font-semibold">Ruso</span>
+            <span id="country-language" class="font-semibold">Cargando...</span>
           </li>
           <li class="flex items-center justify-between border-b border-brand-primary pb-2">
             <span class="flex items-center gap-3 font-medium text-surface-icon-color">
               <img src="/src/assets/Area.svg" alt="" class="w-5 h-5 object-contain" />
               Área:
             </span>
-            <span class="font-semibold">17,098,242km^2</span>
+            <span id="country-area" class="font-semibold">Cargando...</span>
           </li>
           <li class="flex items-center justify-between border-b border-brand-primary pb-2">
             <span class="flex items-center gap-3 font-medium text-surface-icon-color">
               <img src="/src/assets/Coordenadas.svg" alt="" class="w-5 h-5 object-contain" />
               Coordenadas:
             </span>
-            <span class="font-semibold">60.°N,100.0° E</span>
+            <span id="country-coordinates" class="font-semibold">Cargando...</span>
           </li>
-          <li class="flex items-center justify-between">
+          <li class="flex items-center justify-between pb-2">
             <span class="flex items-center gap-3 font-medium text-surface-icon-color">
               <img src="/src/assets/Moneda.svg" alt="" class="w-5 h-5 object-contain" />
               Moneda:
             </span>
-            <span class="font-semibold">Rublo Ruso RUB</span>
+            <span id="country-currency" class="font-semibold">Cargando...</span>
           </li>
         </ul>
       </article>
@@ -149,76 +156,23 @@
             PERFIL GEOGRAFICO
           </h2>
           <h3 class="font-roboto font-black text-base md:text-lg text-surface-icon-color uppercase mt-1 mb-4">
-            RUSIA
+            <span id="country-name">Cargando país...</span>
           </h3>
         </div>
 
         <div class="w-full h-72 rounded-rd-sm overflow-hidden flex items-center justify-center bg-surface-color-background border border-brand-primary p-2">
-          <img src="/src/assets/hero.png" alt="Mapa geográfico de Rusia" class="w-full h-full object-contain" />
+          <img id="country-flag" src="/src/assets/Mosaico.svg" alt="Bandera del país" class="w-full h-full object-contain" />
         </div>
       </article>
 
     </section>
 
-    <!-- Bloque Inferior: Países Relacionados Horizontales -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
-
-      <!-- Tarjeta Horizontal: Finlandia -->
-      <article
-        class="bg-surface-background rounded-rd-md border-2 border-brand-accent/60 p-5 shadow-sm flex flex-col sm:flex-row items-center gap-6">
-        <div class="w-full sm:w-44 h-28 flex-shrink-0 bg-surface-color-background rounded-rd-sm border border-brand-primary overflow-hidden flex items-center justify-center">
-          <img src="/src/assets/Mosaico.svg" alt="Bandera de Finlandia" class="w-full h-full object-cover" />
-        </div>
-
-        <div class="flex-1 w-full text-center sm:text-left">
-          <h3 class="font-roboto font-black text-lg text-surface-icon-color uppercase mb-3 text-center sm:text-center">
-            FINLANDIA
-          </h3>
-          <ul class="space-y-1.5 font-roboto text-xs text-texto-secondary">
-            <li class="flex justify-between items-center px-1">
-              <span class="font-bold text-surface-icon-color">Población:</span>
-              <span>5.5 millones</span>
-            </li>
-            <li class="flex justify-between items-center px-1">
-              <span class="font-bold text-surface-icon-color">Region:</span>
-              <span>Europa del Norte</span>
-            </li>
-            <li class="flex justify-between items-center px-1">
-              <span class="font-bold text-surface-icon-color">Capítal:</span>
-              <span>Helsiki</span>
-            </li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Tarjeta Horizontal: Ucrania -->
-      <article
-        class="bg-surface-background rounded-rd-md border-2 border-brand-accent/60 p-5 shadow-sm flex flex-col sm:flex-row items-center gap-6">
-        <div class="w-full sm:w-44 h-28 flex-shrink-0 bg-surface-color-background rounded-rd-sm border border-brand-primary overflow-hidden flex items-center justify-center">
-          <img src="/src/assets/Mosaico.svg" alt="Bandera de Ucrania" class="w-full h-full object-cover" />
-        </div>
-
-        <div class="flex-1 w-full text-center sm:text-left">
-          <h3 class="font-roboto font-black text-lg text-surface-icon-color uppercase mb-3 text-center sm:text-center">
-            UCRANIA
-          </h3>
-          <ul class="space-y-1.5 font-roboto text-xs text-texto-secondary">
-            <li class="flex justify-between items-center px-1">
-              <span class="font-bold text-surface-icon-color">Población:</span>
-              <span>39.5 Millones</span>
-            </li>
-            <li class="flex justify-between items-center px-1">
-              <span class="font-bold text-surface-icon-color">Region:</span>
-              <span>Europa del este</span>
-            </li>
-            <li class="flex justify-between items-center px-1">
-              <span class="font-bold text-surface-icon-color">Capítal:</span>
-              <span>kieve</span>
-            </li>
-          </ul>
-        </div>
-      </article>
-
+    <!-- Bloque Inferior: Países de la misma región -->
+    <section class="mb-6">
+      <h2 class="font-roboto font-black text-xl mb-6 text-texto-secondary uppercase">
+        Países de la misma región
+      </h2>
+      <div id="related-countries" class="grid grid-cols-1 md:grid-cols-2 gap-8" aria-label="Países de la misma región"></div>
     </section>
 
   </main>
@@ -237,6 +191,7 @@
     </div>
   </footer>
 
+  <script type="module" src="/src/respuesta.ts"></script>
 </body>
 
 </html>
