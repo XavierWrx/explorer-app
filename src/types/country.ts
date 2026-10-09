@@ -1,13 +1,14 @@
 // src/types/country.ts
 
 export interface CountryTranslation {
-    common: string;
-    official: string;
+    common?: string;
+    official?: string;
 }
 
 export interface CountryNames {
     common: string;
     official?: string;
+    native?: Record<string, CountryTranslation | undefined>;
     translations?: {
         spa?: CountryTranslation;
         [key: string]: CountryTranslation | undefined;
@@ -44,6 +45,7 @@ export interface CountryCoordinates {
 }
 
 export interface CountryLanguage {
+    code?: string;
     name?: string;
     native_name?: string;
 }
@@ -61,6 +63,9 @@ export interface Country {
     flag?: CountryFlag;
     population: number;
     region: string;
+    subregion?: string;
+    tlds?: string[];
+    borders?: string[];
     area?: CountryArea;
     coordinates?: CountryCoordinates;
     languages?: CountryLanguage[];

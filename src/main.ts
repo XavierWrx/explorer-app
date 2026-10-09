@@ -228,7 +228,7 @@ async function fetchCountryByCode(code: string): Promise<Country> {
                 record.alpha2Code?.toUpperCase() === normalizedCode ||
                 item.names.common.toLocaleLowerCase() === normalizedName ||
                 item.names.official?.toLocaleLowerCase() === normalizedName ||
-                item.names.translations?.spa?.common.toLocaleLowerCase() ===
+                (item.names.translations?.spa?.common ?? "").toLocaleLowerCase() ===
                     normalizedName
             );
         },
@@ -359,7 +359,7 @@ async function router(): Promise<void> {
     }
 
     const hash = window.location.hash;
-    const match = hash.match(/^#\/country\/(.+)$/);
+    const match = hash.match(/^#\/country\/([A-Za-z]{2,3})$/);
 
     if (!match) {
         homeView.hidden = false;

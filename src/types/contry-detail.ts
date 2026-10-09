@@ -1,4 +1,4 @@
-import type { Country } from "./country";
+import type { Country, CountryTranslation } from "./country";
 
 export interface CountryDetailCurrency {
     code?: string;
@@ -13,13 +13,7 @@ export interface CountryDetailLanguage {
 
 export interface CountryDetail extends Country {
     names: Country["names"] & {
-        native?: Record<
-            string,
-            {
-                common?: string;
-                official?: string;
-            }
-        >;
+        native?: Record<string, CountryTranslation | undefined>;
     };
 
     subregion?: string;
