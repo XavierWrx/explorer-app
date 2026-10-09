@@ -1,9 +1,7 @@
 import type { Country, CountryResponse } from "../types/country";
 import type { CountryDetail } from "../types/contry-detail";
 
-const API_KEY: string | undefined =
-    import.meta.env.VITE_REST_CONTRIES_API_KEY?.trim();
-const API_URL = "/api-proxy/countries/v5";
+const API_URL = "/api/countries";
 const PAGE_SIZE = 100;
 
 let countriesPromise: Promise<Country[]> | undefined;
@@ -41,12 +39,6 @@ function isCountryResponse(value: unknown): value is CountryResponse {
 }
 
 async function loadCountries(): Promise<Country[]> {
-    if (!API_KEY) {
-        throw new Error(
-            "Falta configurar VITE_REST_CONTRIES_API_KEY en el archivo .env.",
-        );
-    }
-
     const countries: Country[] = [];
     let offset = 0;
     let hasMore = true;
@@ -61,14 +53,15 @@ async function loadCountries(): Promise<Country[]> {
 
         const response = await fetch(url, {
             headers: {
-                Authorization: `Bearer ${API_KEY}`,
                 Accept: "application/json",
             },
         });
 
         if (!response.ok) {
+            const details = (await response.text()).trim();
             throw new Error(
-                `Error al cargar países: HTTP ${response.status} ${response.statusText}`.trim(),
+                details ||
+                    `Error al cargar países: HTTP ${response.status} ${response.statusText}`.trim(),
             );
         }
 
