@@ -13,7 +13,8 @@ export default defineConfig(({ mode }) => {
         "/api/countries": {
           target: "https://api.restcountries.com",
           changeOrigin: true,
-          rewrite: () => "/v5",
+          rewrite: (path) =>
+            path.replace(/^\/api\/countries/, "/countries/v5"),
           headers: env.REST_COUNTRIES_API_KEY
             ? { Authorization: `Bearer ${env.REST_COUNTRIES_API_KEY}` }
             : {},
