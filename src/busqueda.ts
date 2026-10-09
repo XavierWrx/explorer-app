@@ -2,10 +2,7 @@ import "./style.css";
 
 import { fetchCountries } from "./api/countries";
 
-import {
-    renderCountries,
-    renderError,
-} from "./render/countryGrid";
+import { renderCountries } from "./render/countryGrid";
 
 import type { Country } from "./types/country";
 
@@ -13,6 +10,7 @@ import { filterCountries } from "./utils/filter";
 
 import {
     renderEmpty,
+    renderError,
     renderLoading,
 } from "./render/states";
 
@@ -144,9 +142,7 @@ async function searchCountries(): Promise<void> {
         );
 
 
-        renderError(
-            "Verifica tu conexión e inténtalo nuevamente.",
-        );
+        countriesContainer.innerHTML = renderError(message);
     }
 }
 

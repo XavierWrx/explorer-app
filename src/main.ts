@@ -281,9 +281,7 @@ async function loadCountries(): Promise<void> {
                 : "Ocurrió un error desconocido.";
         console.error("Error al cargar los países:", message);
 
-        countriesContainer.innerHTML = renderError(
-            "Verifica tu conexión e inténtalo nuevamente.",
-        );
+        countriesContainer.innerHTML = renderError(message);
 
         const retryButton: HTMLButtonElement | null =
             document.querySelector<HTMLButtonElement>(

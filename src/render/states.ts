@@ -46,6 +46,18 @@ export function renderEmpty(query: string): string {
 }
 
 export function renderError(message: string): string {
+    const escapeHtml = (value: string): string =>
+        value.replace(/[&<>"']/g, (character) => {
+            const entities: Record<string, string> = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;",
+            };
+            return entities[character] ?? character;
+        });
+
     return `
     <section
       class="col-span-full rounded-xl border border-red-300
@@ -55,7 +67,7 @@ export function renderError(message: string): string {
       <h2 class="text-xl font-bold text-red-700">
         No pudimos cargar los países
       </h2>
-      <p class="mt-2 text-red-600">${message}</p>
+      <p class="mt-2 text-red-600">${escapeHtml(message)}</p>
       <button
         id="retry-button"
         type="button"
@@ -69,4 +81,3 @@ export function renderError(message: string): string {
     </section>
   `;
 }
-

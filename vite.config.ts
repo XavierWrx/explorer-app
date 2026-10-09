@@ -24,9 +24,9 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         input: {
-          main: resolve(__dirname, "index.html"),
-          busqueda: resolve(__dirname, "Busqueda.html"),
-          respuesta: resolve(__dirname, "Respuesta.html"),
+          main: resolve(import.meta.dirname, "index.html"),
+          busqueda: resolve(import.meta.dirname, "Busqueda.html"),
+          respuesta: resolve(import.meta.dirname, "Respuesta.html"),
         },
       },
     },
