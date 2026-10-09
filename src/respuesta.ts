@@ -8,6 +8,7 @@ import {
     getCapital,
     getFlagDescription,
     getRequiredElement,
+    getRegionName,
 } from "./utils/format";
 
 const countryNameElement = getRequiredElement<HTMLElement>("#country-name");
@@ -122,7 +123,9 @@ async function loadCountryDetails(): Promise<void> {
         countryNameElement.textContent = countryName;
         populationElement.textContent = formatPopulation(country.population);
         capitalElement.textContent = getCapital(country);
-        regionElement.textContent = country.region || "Sin información";
+        regionElement.textContent = country.region
+            ? getRegionName(country.region)
+            : "Sin información";
         languageElement.textContent = getLanguages(country);
         areaElement.textContent = getArea(country);
         coordinatesElement.textContent = getCoordinates(country);

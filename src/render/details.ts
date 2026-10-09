@@ -1,5 +1,5 @@
 import type { CountryDetail } from "../types/contry-detail";
-import { formatPopulation, getCapital } from "../utils/format";
+import { formatPopulation, getCapital, getRegionName } from "../utils/format";
 
 function escapeHtml(value: string): string {
     const entities: Record<string, string> = {
@@ -82,7 +82,7 @@ export function renderDetail(country: CountryDetail): string {
     ${formatPopulation(country.population)}</p>
 
             <p><strong>Región:</strong>
-    ${escapeHtml(country.region)}</p>
+    ${escapeHtml(getRegionName(country.region))}</p>
 
             <p><strong>Subregión:</strong>
     ${escapeHtml(country.subregion || "No registrada")}</p>

@@ -1,12 +1,17 @@
 // src/render/countryCard.ts
 import type { Country } from '../types/country';
-import { formatPopulation, getCapital, getFlagDescription } from '../utils/format';
+import {
+  formatPopulation,
+  getCapital,
+  getFlagDescription,
+  getRegionName,
+} from '../utils/format';
 
 export function createCountryCard(country: Country): string {
   const countryName =
     country.names?.translations?.spa?.common ||
     country.names?.common ||
-    'Awan naganna a nasion';
+    'País sin nombre disponible';
 
   const capitalName = getCapital(country);
   const flagUrl = country.flag?.url_svg || country.flag?.url_png;
@@ -50,7 +55,7 @@ export function createCountryCard(country: Country): string {
                   <img src="/src/assets/Region.svg" alt="" class="w-4 h-4" />
                   Región:
                 </span>
-                <span>${country.region}</span>
+                <span>${getRegionName(country.region)}</span>
               </li>
               <li class="flex items-center justify-between gap-2">
                 <span class="flex items-center gap-2 font-bold text-surface-icon-color">
@@ -66,7 +71,7 @@ export function createCountryCard(country: Country): string {
             flagUrl
               ? `<a
             href="/Respuesta.html?country=${encodeURIComponent(countryName)}"
-            aria-label="Kitaen ti ad-adu pay nga impormasion maipapan iti ${countryName}"
+            aria-label="Más información sobre ${countryName}"
             class="mt-6 w-full bg-brand-button-default hover:bg-brand-button-hover active:scale-95 text-surface-icon-color font-roboto font-bold py-2.5 rounded-rd-sm text-xs transition-all duration-200 cursor-pointer shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-secondary flex items-center justify-center">
             Más información
           </a>`
