@@ -10,6 +10,11 @@ import {
     getRequiredElement,
     getRegionName,
 } from "./utils/format";
+import { preventEmptySearch } from "./utils/searchForm";
+
+const countrySearch =
+    document.querySelector<HTMLInputElement>('input[name="query"]');
+preventEmptySearch(countrySearch?.form ?? null, countrySearch);
 
 const countryNameElement = getRequiredElement<HTMLElement>("#country-name");
 const populationElement = getRequiredElement<HTMLElement>("#country-population");

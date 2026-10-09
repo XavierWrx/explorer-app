@@ -7,6 +7,7 @@ import { renderCountries } from "./render/countryGrid";
 import type { Country } from "./types/country";
 
 import { filterCountries } from "./utils/filter";
+import { preventEmptySearch } from "./utils/searchForm";
 
 import {
     renderEmpty,
@@ -51,6 +52,11 @@ if (countrySearch) {
     countrySearch.value = queryFromUrl;
 }
 
+preventEmptySearch(
+    countrySearch?.form ?? null,
+    countrySearch,
+);
+
 
 if (regionFilter) {
     regionFilter.value = regionFromUrl;
@@ -68,6 +74,15 @@ async function searchCountries(): Promise<void> {
         return;
     }
 
+    const query: string = countrySearch?.value.trim() ?? "";
+    if (!query) {
+        countriesContainer.innerHTML = `
+            <p class="col-span-full text-center" role="status" aria-live="polite">
+                Escribe el nombre de un país para ver los resultados.
+            </p>
+        `;
+        return;
+    }
 
     countriesContainer.innerHTML =
         renderLoading();
@@ -77,10 +92,6 @@ async function searchCountries(): Promise<void> {
 
         const allCountries: Country[] =
             await fetchCountries();
-
-
-        const query: string =
-            countrySearch?.value.trim() ?? "";
 
 
         const region: string =

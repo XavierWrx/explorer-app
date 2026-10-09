@@ -21,6 +21,7 @@ import type { Country } from "./types/country";
 
 // Filtra los países por nombre y región.
 import { filterCountries } from "./utils/filter";
+import { preventEmptySearch } from "./utils/searchForm";
 
 // Importa las funciones que muestran los estados visuales de carga, ausencia y error.
 import { renderEmpty, renderError, renderLoading } from "./render/states";
@@ -182,6 +183,11 @@ const countrySearch: HTMLInputElement | null =
     document.querySelector<HTMLInputElement>(
         'input[name="query"]',
     );
+
+preventEmptySearch(
+    countrySearch?.form ?? null,
+    countrySearch,
+);
 
 // Selector utilizado para filtrar por región.
 const regionFilter: HTMLSelectElement | null =
