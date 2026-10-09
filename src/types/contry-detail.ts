@@ -1,28 +1,27 @@
-import type { Country } from "./country";
+import type { Country, CountryTranslation } from "./country";
+
+export interface CountryDetailCurrency {
+    code?: string;
+    name: string;
+    symbol?: string;
+}
+
+export interface CountryDetailLanguage {
+    name?: string;
+    native_name?: string;
+}
+
 export interface CountryDetail extends Country {
     names: Country["names"] & {
-        native?: Record<
-            string,
-            {
-                common?: string;
-                official?: string;
-            }
-        >;
+        native?: Record<string, CountryTranslation | undefined>;
     };
 
     subregion?: string;
     tlds?: string[];
 
-    currencies?: {
-        code: string;
-        name: string;
-        symbol?: string;
-    }[];
+    currencies?: CountryDetailCurrency[];
 
-    languages?: {
-        name: string;
-        native_name?: string;
-    }[];
+    languages?: CountryDetailLanguage[];
 
     borders?: string[];
 }

@@ -1,4 +1,5 @@
 import type { Country, CountryResponse } from "../types/country";
+import type { CountryDetail } from "../types/contry-detail";
 
 const API_KEY: string | undefined =
     import.meta.env.VITE_REST_CONTRIES_API_KEY?.trim();
@@ -104,4 +105,20 @@ export function fetchCountries(): Promise<Country[]> {
     }
 
     return countriesPromise;
+}
+
+export async function fetchCountryByCode(code: string): Promise<CountryDetail> {
+    const normalizedCode = code.trim().toUpperCase();
+    const countries = await fetchCountries();
+    const country = countries.find(
+        (item) =>
+            item.codes?.alpha_2?.toUpperCase() === normalizedCode ||
+            item.codes?.alpha_3?.toUpperCase() === normalizedCode,
+    );
+
+    if (!country) {
+        throw new Error(`No se encontró un país con el código "${code}".`);
+    }
+
+    return country;
 }

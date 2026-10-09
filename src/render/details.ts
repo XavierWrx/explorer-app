@@ -16,13 +16,15 @@ export function renderDetail(country: CountryDetail): string {
         nativeNames[0]?.common ??
         "No registrado";
 
-    const currencies = country.currencies?.length
-        ? country.currencies.map((item) => item.name).join(", ")
+    const currencyItems = country.currencies ?? [];
+    const currencies = currencyItems.length
+        ? currencyItems.map((item) => item.name).join(", ")
         : "No registradas";
 
-    const languages = country.languages?.length
-        ? country.languages.map((item) => item.name).join(", ")
-        : "No registrados";
+    const languages = country.languages
+        ?.map((item) => item.name ?? "")
+        .filter(Boolean)
+        .join(", ") || "No registrados";
 
     const domains = country.tlds?.length
         ? country.tlds.join(", ")
