@@ -29,6 +29,19 @@
   --radius-rd-lg: 20px;
   --radius-rd-md: 12px;
 
+  --animate-fade-in: fade-in 500ms ease-out both;
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Espaciados */
   --spacing-ex-lg: 24px;
   --spacing-ex-md: 20px;
@@ -41,4 +54,10 @@
 :root {
   --font-country-name: clamp(1.125rem, 1rem + 0.6vw, 1.5rem);
   --font-page-title: clamp(1.75rem, 1.25rem + 2vw, 2.75rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation: none;
+  }
 }

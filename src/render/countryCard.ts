@@ -20,7 +20,7 @@ export function createCountryCard(country: Country): string {
 
   return `
     <article
-      class="@container w-full bg-surface-background rounded-rd-lg border-2 border-brand-accent p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-accent">
+      class="@container w-full bg-surface-background rounded-rd-lg border-2 border-brand-accent p-4 flex flex-col justify-between shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus-within:ring-2 focus-within:ring-brand-accent animate-fade-in">
       <div class="flex flex-col @min-[17.8125rem]:flex-row gap-4">
         ${flagUrl? 
         `<img
