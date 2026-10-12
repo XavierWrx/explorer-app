@@ -4,7 +4,9 @@ import type { Country } from '../types/country';
 
 const populationFormatter = new Intl.NumberFormat('es-SV');
 
-export function formatPopulation(population: number): string {
+export function formatPopulation(
+    population: number | null | undefined,
+): string {
     if (typeof population !== 'number' || isNaN(population)) {
         return 'Sin datos';
     }
@@ -19,8 +21,10 @@ const regionNames: Record<string, string> = {
     Oceania: 'Oceanía',
 };
 
-export function getRegionName(region: string): string {
-    return regionNames[region] ?? region;
+export function getRegionName(region: string | null | undefined): string {
+    return region?.trim()
+        ? regionNames[region] ?? region
+        : 'Sin información';
 }
 
 export function getCapital(country: Country): string {

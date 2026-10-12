@@ -22,9 +22,6 @@ export function filterCountries(
     return countries.filter(
         (country: Country): boolean => {
 
-            const countryRegion: string =
-                normalize(country.region);
-
             const countryNames: string[] = [
                 country.names.common,
 
@@ -47,21 +44,12 @@ export function filterCountries(
                         ),
                 );
 
-            const matchesRegion: boolean =
-                countryRegion.includes(
-                    normalizeQuery,
-                );
-
             const matchesSelectedRegion: boolean =
                 region === "" ||
                 country.region === region;
 
             return (
-                (
-                    matchesName ||
-                    matchesRegion
-                ) &&
-                matchesSelectedRegion
+                matchesName && matchesSelectedRegion
             );
         },
     );

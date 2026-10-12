@@ -33,8 +33,12 @@ function isCountryResponse(value: unknown): value is CountryResponse {
             isRecord(country) &&
             isRecord(country.names) &&
             typeof country.names.common === "string" &&
-            typeof country.population === "number" &&
-            typeof country.region === "string",
+            (country.population === undefined ||
+                country.population === null ||
+                typeof country.population === "number") &&
+            (country.region === undefined ||
+                country.region === null ||
+                typeof country.region === "string"),
     );
 }
 

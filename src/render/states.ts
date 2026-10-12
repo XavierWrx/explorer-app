@@ -4,7 +4,7 @@ export function renderLoading(): string {
         (): string => `
       <article
         class="animate-pulse overflow-hidden rounded-xl
-               bg-neutral-0 shadow-md"
+               bg-surface-background shadow-md"
         aria-hidden="true"
       >
         <div class="h-40 bg-neutral-300"></div>
@@ -30,7 +30,7 @@ export function renderEmpty(query: string): string {
     return `
     <section
       class="col-span-full rounded-xl border border-neutral-300
-             bg-neutral-0 px-6 py-12 text-center"
+             bg-surface-background px-6 py-12 text-center"
       role="status"
       aria-live="polite"
     >

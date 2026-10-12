@@ -7,7 +7,6 @@ import { renderCountries } from "./render/countryGrid";
 import type { Country } from "./types/country";
 
 import { filterCountries } from "./utils/filter";
-import { preventEmptySearch } from "./utils/searchForm";
 
 import {
     renderEmpty,
@@ -52,110 +51,91 @@ if (countrySearch) {
     countrySearch.value = queryFromUrl;
 }
 
-preventEmptySearch(
-    countrySearch?.form ?? null,
-    countrySearch,
-);
-
-
 if (regionFilter) {
     regionFilter.value = regionFromUrl;
 }
 
+let allCountries: Country[] = [];
+let countriesLoaded = false;
+let searchTimer: ReturnType<typeof setTimeout> | undefined;
 
-async function searchCountries(): Promise<void> {
+function cancelPendingSearch(): void {
+    if (searchTimer !== undefined) {
+        clearTimeout(searchTimer);
+        searchTimer = undefined;
+    }
+}
 
+function applyFilters(): void {
     if (!countriesContainer) {
+        console.error("No se encontró #country-container.");
+        return;
+    }
 
-        console.error(
-            "No se encontró #country-container.",
-        );
-
+    if (!countriesLoaded) {
         return;
     }
 
     const query: string = countrySearch?.value.trim() ?? "";
-    if (!query) {
-        countriesContainer.innerHTML = `
-            <p class="col-span-full text-center" role="status" aria-live="polite">
-                Escribe el nombre de un país para ver los resultados.
-            </p>
-        `;
+    const region: string = regionFilter?.value ?? "";
+    const filteredCountries: Country[] = filterCountries(
+        allCountries,
+        query,
+        region,
+    );
+
+    if (filteredCountries.length === 0) {
+        countriesContainer.innerHTML = renderEmpty(query);
         return;
     }
 
-    countriesContainer.innerHTML =
-        renderLoading();
+    renderCountries(filteredCountries);
+}
 
+async function loadCountries(): Promise<void> {
+    if (!countriesContainer) {
+        console.error(
+            "No se encontró #country-container.",
+        );
+        return;
+    }
+
+    countriesContainer.innerHTML = renderLoading();
 
     try {
-
-        const allCountries: Country[] =
-            await fetchCountries();
-
-
-        const region: string =
-            regionFilter?.value ?? "";
-
-
-        console.log(
-            "Texto buscado:",
-            query,
-        );
-
-
-        console.log(
-            "Región seleccionada:",
-            region,
-        );
-
-
-        const filteredCountries: Country[] =
-            filterCountries(
-                allCountries,
-                query,
-                region,
-            );
-
-
-        console.log(
-            "Resultados:",
-            filteredCountries,
-        );
-
-
-        if (
-            filteredCountries.length === 0
-        ) {
-
-            countriesContainer.innerHTML =
-                renderEmpty(query);
-
-            return;
-        }
-
-
-        renderCountries(
-            filteredCountries,
-        );
-
+        allCountries = await fetchCountries();
+        countriesLoaded = true;
+        applyFilters();
     } catch (error: unknown) {
-
         const message: string =
             error instanceof Error
                 ? error.message
                 : "Ocurrió un error desconocido.";
 
-
-        console.error(
-            "Error al buscar países:",
-            message,
-        );
-
-
+        console.error("Error al buscar países:", message);
         countriesContainer.innerHTML = renderError(message);
+
+        const retryButton =
+            countriesContainer.querySelector<HTMLButtonElement>(
+                "#retry-button",
+            );
+        retryButton?.addEventListener("click", (): void => {
+            void loadCountries();
+        });
     }
 }
 
+countrySearch?.addEventListener("input", (): void => {
+    cancelPendingSearch();
+    searchTimer = setTimeout((): void => {
+        searchTimer = undefined;
+        applyFilters();
+    }, 300);
+});
 
-void searchCountries();
+regionFilter?.addEventListener("change", (): void => {
+    cancelPendingSearch();
+    applyFilters();
+});
+
+void loadCountries();

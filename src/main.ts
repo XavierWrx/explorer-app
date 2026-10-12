@@ -207,10 +207,18 @@ const INITIAL_VISIBLE_COUNTRIES: number = 8;
 
 // Conserva todos los países recibidos desde la API.
 let allCountries: Country[] = [];
+let countriesLoaded: boolean = false;
 
 // Temporizador utilizado para el retraso de búsqueda (debounce).
 let searchTimer:
     ReturnType<typeof setTimeout> | undefined;
+
+function cancelPendingSearch(): void {
+    if (searchTimer !== undefined) {
+        clearTimeout(searchTimer);
+        searchTimer = undefined;
+    }
+}
 
 async function fetchCountryByCode(code: string): Promise<Country> {
     const normalizedCode: string = code.toUpperCase();
@@ -266,9 +274,18 @@ async function loadCountries(): Promise<void> {
 
     try {
         allCountries = await fetchCountries();
+        countriesLoaded = true;
 
         if (allCountries.length === 0) {
             countriesContainer.innerHTML = renderEmpty("");
+            return;
+        }
+
+        if (
+            countrySearch?.value.trim() ||
+            regionFilter?.value
+        ) {
+            applyFilter();
             return;
         }
 
@@ -307,7 +324,8 @@ function applyFilter(): void {
     if (
         !countrySearch ||
         !regionFilter ||
-        !countriesContainer
+        !countriesContainer ||
+        !countriesLoaded
     ) {
         return;
     }
@@ -335,20 +353,20 @@ function applyFilter(): void {
 countrySearch?.addEventListener(
     "input",
     (): void => {
-        if (searchTimer !== undefined) {
-            clearTimeout(searchTimer);
-        }
-
-        searchTimer = setTimeout(
-            applyFilter,
-            300,
-        );
+        cancelPendingSearch();
+        searchTimer = setTimeout((): void => {
+            searchTimer = undefined;
+            applyFilter();
+        }, 300);
     },
 );
 
 regionFilter?.addEventListener(
     "change",
-    applyFilter,
+    (): void => {
+        cancelPendingSearch();
+        applyFilter();
+    },
 );
 
 
